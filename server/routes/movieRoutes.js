@@ -23,7 +23,7 @@ const upload = multer({ storage });
 
 router.get("/", async (req, res) => {
   try {
-    const movies = await Movie.find();
+    const movies = await Movie.find().sort({ createdAt: -1 }); 
     res.json(movies);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -78,7 +78,7 @@ router.post(
           ? `/uploads/${req.files.poster[0].filename}`
           : "",
 
-        trailer: trailers,
+        trailers: trailers,
       });
 
       await movie.save();

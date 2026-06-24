@@ -31,7 +31,10 @@ const movieSchema = new mongoose.Schema({
   },
 
   description: String,
-});
+},
+{
+    timestamps: true, // 🔥 THIS IS THE KEY
+  });
 
 module.exports =
   mongoose.models.Movie || mongoose.model("Movie", movieSchema);

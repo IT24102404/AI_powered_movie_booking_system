@@ -25,7 +25,7 @@ app.use("/movies", movieRoutes);
 app.use("/bookings", bookingRoutes);
 app.use("/auth", authRoutes);
 app.use("/admin", adminRoutes);
-app.use("/payment", paymentRoutes);
+app.use("/api/payment", paymentRoutes);
 app.use("/ratings", ratingRoutes);
 app.use("/recommend", recommendRoutes);
 app.use("/uploads", express.static("uploads"));
