@@ -8,7 +8,11 @@ const bookingSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now
-  }
+  },
+  ticketId: {
+  type: String,
+  unique: true
+}
 
 });
 

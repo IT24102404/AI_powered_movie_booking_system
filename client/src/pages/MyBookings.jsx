@@ -28,7 +28,12 @@ function MyBookings() {
       <h1 className="text-4xl font-bold mb-10">
         My Bookings 🎟️
       </h1>
-
+<button
+  onClick={() => navigate("/movies")}
+  className="bg-blue-600 hover:bg-darkblue-700 text-white px-4 py-2 rounded-lg"
+>
+  Back to Movies
+</button>
       <div className="space-y-6">
 
         {bookings.map((b) => (
@@ -55,12 +60,7 @@ function MyBookings() {
         ))}
   
       </div>
-      <button
-  onClick={() => navigate("/movies")}
-  className="bg-blue-600 hover:bg-darkblue-700 text-white px-4 py-2 rounded-lg"
->
-  Back to Movies
-</button>
+      
     </div>
     </div>
 

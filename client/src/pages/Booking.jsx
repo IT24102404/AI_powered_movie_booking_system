@@ -36,6 +36,16 @@ function Booking() {
     setLoading(true);
 
     try {
+      // Save booking temp data for success page
+      localStorage.setItem(
+        "latestBooking",
+        JSON.stringify({
+          movieId: id,
+          movieTitle: movie.title,
+          seats: selectedSeats,
+        })
+      );
+
       localStorage.setItem("movieId", id);
 
       const response = await axios.post(
@@ -47,7 +57,12 @@ function Booking() {
         }
       );
 
-      window.location.href = response.data.url;
+      if (response.data.url) {
+        window.location.href = response.data.url;
+      } else {
+        alert("Payment session failed");
+        setLoading(false);
+      }
     } catch (err) {
       console.log(err);
       alert("Payment failed");
@@ -89,6 +104,7 @@ function Booking() {
 
       <div className="bg-gray-900 min-h-screen text-white p-10">
 
+        {/* TITLE */}
         <h1 className="text-4xl font-bold mb-2">
           {movie?.title}
         </h1>

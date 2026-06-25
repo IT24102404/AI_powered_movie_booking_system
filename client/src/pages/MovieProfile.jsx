@@ -58,7 +58,7 @@ function MovieDetails() {
       <Navbar_2 />
 
       <div className="p-10">
-
+       
         {/* BACK BUTTON */}
         <button
           onClick={() => navigate("/movies")}
@@ -86,8 +86,15 @@ function MovieDetails() {
             <p className="text-yellow-400 font-semibold text-lg">
               ⭐ {movie.rating?.average || 0}
             </p>
-          </div>
-        </div>
+
+             <button
+                    onClick={() =>
+                      navigate(`/booking/${movie._id}`)
+                    }
+                    className="bg-red-600 hover:bg-red-700 px-5 py-2 rounded mt-5 w-full"
+                  >
+                    Book Now
+                  </button>
 
         {/* TRAILERS */}
         {movie.trailer?.length > 0 && (
@@ -115,8 +122,13 @@ function MovieDetails() {
                 </div>
               ))}
             </div>
+
           </div>
         )}
+
+        </div>
+        </div>
+
 
         {/* ⭐ RECOMMENDATIONS */}
         <div className="mt-12">

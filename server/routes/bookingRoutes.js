@@ -3,7 +3,7 @@ const router = express.Router();
 // const auth = require("../middleware/auth");
 const Booking = require("../models/Booking");
 const auth = require("../middleware/auth");
-
+const { v4: uuidv4 } = require("uuid");
 // Save booking
 router.post("/",auth ,async (req, res) => {
 
@@ -13,7 +13,8 @@ router.post("/",auth ,async (req, res) => {
       userId: req.user.id,   // ⭐ from JWT
       movieId: req.body.movieId,
       movieTitle: req.body.movieTitle,
-      seats: req.body.seats
+      seats: req.body.seats,
+      ticketId: "TICKET_" + uuidv4(),
     });
 
     const saved = await booking.save();

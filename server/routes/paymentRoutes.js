@@ -22,7 +22,7 @@ router.post("/create-checkout-session", async (req, res) => {
       ],
       mode: "payment",
       success_url: "http://localhost:3000/success",
-      cancel_url: "http://localhost:3000/booking",
+      cancel_url: `http://localhost:3000/booking/${req.body.movieId}`,
     });
 
     res.json({ url: session.url });
