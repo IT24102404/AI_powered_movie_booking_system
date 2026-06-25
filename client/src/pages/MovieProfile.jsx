@@ -125,10 +125,7 @@ function MovieDetails() {
 
           </div>
         )}
-
-        </div>
-        </div>
-
+        
 
         {/* ⭐ RECOMMENDATIONS */}
         <div className="mt-12">
