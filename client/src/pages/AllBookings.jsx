@@ -45,7 +45,7 @@ function AllBookings() {
     <div className="p-10 bg-gray-900 min-h-screen text-white">
 
       <h1 className="text-3xl font-bold mb-6">
-        My Bookings 🎟️
+        ALL Bookings 🎟️
       </h1>
        <button
         onClick={() => navigate("/admin")}
