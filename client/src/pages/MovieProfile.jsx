@@ -21,7 +21,7 @@ function MovieDetails() {
       .catch((err) => console.log(err));
   }, [id]);
 
-  // 🎯 LOAD RECOMMENDATIONS (FIXED + SAFE)
+  // 🎯 LOAD RECOMMENDATIONS
   useEffect(() => {
     const userId = localStorage.getItem("userId");
 
@@ -35,15 +35,13 @@ function MovieDetails() {
 
     axios
       .get(`http://localhost:5000/recommend/${userId}`)
-      .then((res) => {
-        setRecommendations(res.data || []);
-      })
+      .then((res) => setRecommendations(res.data || []))
       .catch((err) => {
         console.log(err);
         setRecommendations([]);
       })
       .finally(() => setLoadingRec(false));
-  }, [id]); // 🔥 keep updated when page changes
+  }, [id]);
 
   if (!movie) {
     return <p className="text-white p-10">Loading...</p>;
@@ -58,7 +56,7 @@ function MovieDetails() {
       <Navbar_2 />
 
       <div className="p-10">
-       
+
         {/* BACK BUTTON */}
         <button
           onClick={() => navigate("/movies")}
@@ -87,14 +85,14 @@ function MovieDetails() {
               ⭐ {movie.rating?.average || 0}
             </p>
 
-             <button
-                    onClick={() =>
-                      navigate(`/booking/${movie._id}`)
-                    }
-                    className="bg-red-600 hover:bg-red-700 px-5 py-2 rounded mt-5 w-full"
-                  >
-                    Book Now
-                  </button>
+            <button
+              onClick={() => navigate(`/booking/${movie._id}`)}
+              className="bg-red-600 hover:bg-red-700 px-5 py-2 rounded mt-5 w-full"
+            >
+              Book Now
+            </button>
+          </div>
+        </div>
 
         {/* TRAILERS */}
         {movie.trailer?.length > 0 && (
@@ -122,10 +120,8 @@ function MovieDetails() {
                 </div>
               ))}
             </div>
-
           </div>
         )}
-        
 
         {/* ⭐ RECOMMENDATIONS */}
         <div className="mt-12">
